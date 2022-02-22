@@ -2,6 +2,9 @@ name: Docker Publish
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+    - 'v1.*'
 
 env:
   # Use docker.io for Docker Hub if empty
