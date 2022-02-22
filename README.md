@@ -1,16 +1,11 @@
 # Containerized Chia Node
 
-Based on pure latest Alpine
+Features:
+- Fork of official Chia node
+- Includes madMAx plotter
+- Includes official chia PoS plot validator
 
 ## Usage
-
-### Buidling
-
-```shell
-git clone https://github.com/xorde-nodes/chia-node.git
-cd chia-node
-sh make.sh
-```
 
 ### Running
 
@@ -18,7 +13,7 @@ sh make.sh
 
 ```shell
 docker run -d --name chia-node \
-	xorde/chia-node:latest
+	ghcr.io/xorde-nodes/chia-node:latest
 ```
 
 #### Node with external plots
@@ -28,28 +23,36 @@ Please replace `/slow-disk/chia-plots` with some path on a host server where you
 ```shell
 docker run -d --name chia-node \
     -v /slow-disk/chia-plots:/plots \
-	xorde/chia-node:latest
+	ghcr.io/xorde-nodes/chia-node:latest
 ```
+
+#### Using madMAx plotter
+
+Enable RAM disk:
+
+```shell
+sudo mount -t tmpfs -o size=110G tmpfs /mnt/ram/
+```
+
+While having chia-node docker container running:
+
+```shell
+docker run --rm -t ghcr.io/xorde-nodes/chia-node chia_plot -n <plot-count> -r <thread-count> -t <tmpdir-1> -2 <tmpdir-2> -d <final-dir> -c <p2-singleton-address> -f <farmer-public-key> 
+```
+
+More info: https://github.com/madMAx43v3r/chia-plotter
+
+### Using Chia plot verifier
+
+```shell
+
+```
+
+More info: https://github.com/Chia-Network/chiapos
 
 ### Troubleshooting
 
-#### Determine Chia node version
-
-```shell
-docker run --rm -t xorde/chia-node version
-```
-
-#### Get build information
-
-```shell
-docker run --rm -t xorde/chia-node build_info
-```
-
-#### Launch emergency shell
-
-```shell
-docker run -it --entrypoint /bin/sh xorde/chia-node
-```
+TODO
 
 ## Credits
 
