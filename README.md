@@ -56,9 +56,21 @@ docker run -d --name chia-node \
 
 3. Run chia plot:
 
+Minimal run:
+
 ```shell
-docker exec -it chia-node chia_plot -n <plot-count> -r <thread-count> -t <tmpdir-1> -2 <tmpdir-2> -d <final-dir> -c <p2-singleton-address> -f <farmer-public-key> 
+docker exec -it chia-node chia_plot \
+  -n <plot-count> \
+  -t /tmp/plots/ \
+  -2 /tmp/ram-disk \
+  -d /plots/ \
+  -c <pool-contract-address> \
+  -f <farmer-public-key> 
 ```
+
+- Plot count: use `-1` for plotting indefinitely, plot size is roughly 100Gb, so you can calculate how many plots your storage can handle.
+- Pool contract address can be found with `chia plotnft show` in "Pool contract address" value
+- Farmer public key can be found with `chia keys show` in "Farmer public key" value
 
 More info: https://github.com/madMAx43v3r/chia-plotter
 
