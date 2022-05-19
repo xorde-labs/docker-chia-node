@@ -10,7 +10,7 @@ Features:
 ### Pulling the image
 
 ```shell
-docker pull ghcr.io/xorde-nodes/chia-node:main
+docker pull ghcr.io/xorde-nodes/chia-node:latest
 ```
 
 ### Running
@@ -19,7 +19,7 @@ docker pull ghcr.io/xorde-nodes/chia-node:main
 
 ```shell
 docker run -d --name chia-node \
-	ghcr.io/xorde-nodes/chia-node:main
+	ghcr.io/xorde-nodes/chia-node:latest
 ```
 
 #### Node with external plots
@@ -29,7 +29,7 @@ Please replace `/slow-disk/chia-plots` with some path on a host server where you
 ```shell
 docker run -d --name chia-node \
     -v /{slow-disk}/chia-plots:/plots \
-	ghcr.io/xorde-nodes/chia-node:main
+	ghcr.io/xorde-nodes/chia-node:latest
 ```
 
 #### Using madMAx plotter
@@ -51,7 +51,7 @@ docker run -d --name chia-node \
     -v /{fast-dist}/chia-node:/tmp/plots \
     -v /tmp/ram-disk:/tmp/ram-disk \
     -v chia-node-mainnet:/root/.chia/mainnet/ \
-	ghcr.io/xorde-nodes/chia-node:main
+	ghcr.io/xorde-nodes/chia-node:latest
 ```
 
 3. Run chia plot:
