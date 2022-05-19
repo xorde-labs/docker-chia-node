@@ -1,6 +1,9 @@
 FROM python:3.9 as builder_chiaplot
 WORKDIR /tmp/builder
 
+ARG DOCKER_GIT_SHA
+ENV DOCKER_GIT_SHA=${DOCKER_GIT_SHA}
+
 ### Install build tools:
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y libsodium-dev cmake g++ git build-essential

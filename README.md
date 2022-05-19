@@ -32,6 +32,8 @@ docker run -d --name chia-node \
 	ghcr.io/xorde-nodes/chia-node:latest
 ```
 
+### 
+
 #### Using madMAx plotter
 
 1. Create RAM disk:
