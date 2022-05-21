@@ -32,20 +32,32 @@ docker run -d --name chia-node \
 	ghcr.io/xorde-nodes/chia-node:latest
 ```
 
-### 
+#### Update running node
 
-#### Using madMAx plotter
+```shell
+docker pull ghcr.io/xorde-nodes/chia-node:latest
+docker restart chia-node
+```
 
-1. Create RAM disk:
+### Using madMAx plotter
+
+#### 1. Create RAM disk
 
 Please note that you will need to re-create it after each reboot.
+
+> **You need at least 128Gb RAM available for RAM drive to operate.**
 
 ```shell
 mkdir -p /tmp/ram-disk
 sudo mount -t tmpfs -o size=110G tmpfs /tmp/ram-disk/
 ```
 
-2. Run chia-node docker container:
+#### 2. Run chia-node docker container
+
+We need to run chia-node with all required disks mounted inside:
+- Slow persistent plot storage
+- Fast plotting disk
+- RAM disk
 
 ```shell
 docker run -d --name chia-node \
@@ -56,7 +68,7 @@ docker run -d --name chia-node \
 	ghcr.io/xorde-nodes/chia-node:latest
 ```
 
-3. Run chia plot:
+#### 3. Run chia plot
 
 Minimal run:
 
